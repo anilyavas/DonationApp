@@ -5,16 +5,18 @@ import globalStyle from '../../assets/styles/globalStyle';
 import Header from '../../components/Header/Header';
 import Tab from '../../components/Tab/Tab';
 import Badge from '../../components/Badge/Badge';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import Search from '../../components/Search/Search';
 
 const Home = () => {
   return (
     <SafeAreaView style={(globalStyle.backgroundWhite, globalStyle.flex)}>
-      <View>
-        <Header title={'Azzahri A.'} type={1} />
-        <Tab title={'Highlight'} />
-        <Tab title={'Highlight'} isInactive={true} />
-        <Badge title={'Environment'} />
-      </View>
+      <Search
+        onSearch={value => {
+          console.log(value);
+        }}
+      />
     </SafeAreaView>
   );
 };
