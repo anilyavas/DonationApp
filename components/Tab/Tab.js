@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Pressable, Text} from 'react-native';
 import style from './style';
 import PropTypes from 'prop-types';
-import {horizontalScale} from '../../assets/styles/Scaling';
+import {horizontalScale} from '../../assets/styles/scaling';
 
 const Tab = props => {
   const [width, setWidth] = useState(0);

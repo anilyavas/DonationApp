@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {scaleFontSize} from '../../assets/styles/Scaling';
+import {scaleFontSize} from '../../assets/styles/scaling';
 
 const style = StyleSheet.create({
   title1: {

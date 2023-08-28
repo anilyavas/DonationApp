@@ -3,7 +3,7 @@ import {
   horizontalScale,
   scaleFontSize,
   verticalScale,
-} from '../../assets/styles/Scaling';
+} from '../../assets/styles/scaling';
 
 const style = StyleSheet.create({
   searchInput: {
