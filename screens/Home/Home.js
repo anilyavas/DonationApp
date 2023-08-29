@@ -6,11 +6,8 @@ import {
   ScrollView,
   Image,
   Pressable,
+  FlatList,
 } from 'react-native';
-
-// Importing the useSelector and useDispatch hooks from the React Redux library
-// The useSelector hook allows us to select and retrieve data from the store
-// The useDispatch hook allows us to dispatch actions to update the store
 import {useDispatch, useSelector} from 'react-redux';
 
 import Header from '../../components/Header/Header';
@@ -18,14 +15,11 @@ import Header from '../../components/Header/Header';
 import globalStyle from '../../assets/styles/globalStyle';
 import style from './style';
 import Search from '../../components/Search/Search';
-
+import Tab from '../../components/Tab/Tab';
+import {updateSelectedCategoryId} from '../../redux/reducers/Categories';
 const Home = () => {
-  // Using the useSelector hook to select the "user" slice of the store
-  // This will return the user object containing firstName, lastName and userId fields
   const user = useSelector(state => state.user);
 
-  // Using the useDispatch hook to get a reference to the dispatch function
-  // This function allows us to dispatch actions to update the store
   const dispatch = useDispatch();
   const categories = useSelector(state => state.categories);
 
@@ -57,10 +51,28 @@ const Home = () => {
             resizeMode={'contain'}
           />
         </Pressable>
+        <View style={style.categoryHeader}>
+          <Header title={'Select Category'} type={2} />
+        </View>
+        <View style={style.categories}>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={categories.categories}
+            renderItem={({item}) => (
+              <View style={style.categoryItem} key={item.categoryId}>
+                <Tab
+                  tabId={item.categoryId}
+                  onPress={value => dispatch(updateSelectedCategoryId(value))}
+                  title={item.name}
+                  isInactive={item.categoryId !== categories.selectedCategoryId}
+                />
+              </View>
+            )}></FlatList>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-// Exporting the Home component to be used in other parts of the app
 export default Home;
