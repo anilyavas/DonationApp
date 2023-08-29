@@ -8,24 +8,47 @@ import {
   Pressable,
   FlatList,
 } from 'react-native';
+
+// Importing the useSelector and useDispatch hooks from the React Redux library
+// The useSelector hook allows us to select and retrieve data from the store
+// The useDispatch hook allows us to dispatch actions to update the store
 import {useDispatch, useSelector} from 'react-redux';
 
 import Header from '../../components/Header/Header';
+import Search from '../../components/Search/Search';
+import Tab from '../../components/Tab/Tab';
+import SingleDonationItem from '../../components/SingleDonationItem/SingleDonationItem';
+
+import {Routes} from '../../navigation/Routes';
+import {updateSelectedCategoryId} from '../../redux/reducers/Categories';
+import {updateSelectedDonationId} from '../../redux/reducers/Donations';
 
 import globalStyle from '../../assets/styles/globalStyle';
 import style from './style';
-import Search from '../../components/Search/Search';
-import Tab from '../../components/Tab/Tab';
-import {updateSelectedCategoryId} from '../../redux/reducers/Categories';
-const Home = () => {
-  const user = useSelector(state => state.user);
-  const categories = useSelector(state => state.categories);
-  const dispatch = useDispatch();
 
+const Home = ({navigation}) => {
+  // Using the useSelector hook to select the "user" slice of the store
+  // This will return the user object containing firstName, lastName and userId fields
+  const user = useSelector(state => state.user);
+
+  // Using the useDispatch hook to get a reference to the dispatch function
+  // This function allows us to dispatch actions to update the store
+  const dispatch = useDispatch();
+  const categories = useSelector(state => state.categories);
+  const donations = useSelector(state => state.donations);
+
+  const [donationItems, setDonationItems] = useState([]);
   const [categoryPage, setCategoryPage] = useState(1);
   const [categoryList, setCategoryList] = useState([]);
   const [isLoadingCategories, setIsLoadingCategories] = useState(false);
   const categoryPageSize = 4;
+
+  useEffect(() => {
+    const items = donations.items.filter(value =>
+      value.categoryIds.includes(categories.selectedCategoryId),
+    );
+    setDonationItems(items);
+  }, [categories.selectedCategoryId]);
 
   useEffect(() => {
     setIsLoadingCategories(true);
@@ -83,6 +106,10 @@ const Home = () => {
               if (isLoadingCategories) {
                 return;
               }
+              console.log(
+                'User has reached the end and we are getting more data for page number ',
+                categoryPage,
+              );
               setIsLoadingCategories(true);
               let newData = pagination(
                 categories.categories,
@@ -107,11 +134,36 @@ const Home = () => {
                   isInactive={item.categoryId !== categories.selectedCategoryId}
                 />
               </View>
-            )}></FlatList>
+            )}
+          />
         </View>
+        {donationItems.length > 0 && (
+          <View style={style.donationItemsContainer}>
+            {donationItems.map(value => (
+              <View key={value.donationItemId} style={style.singleDonationItem}>
+                <SingleDonationItem
+                  onPress={selectedDonationId => {
+                    dispatch(updateSelectedDonationId(selectedDonationId));
+                    navigation.navigate(Routes.SingleDonationItem);
+                  }}
+                  donationItemId={value.donationItemId}
+                  uri={value.image}
+                  donationTitle={value.name}
+                  badgeTitle={
+                    categories.categories.filter(
+                      val => val.categoryId === categories.selectedCategoryId,
+                    )[0].name
+                  }
+                  price={parseFloat(value.price)}
+                />
+              </View>
+            ))}
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
 };
 
+// Exporting the Home component to be used in other parts of the app
 export default Home;

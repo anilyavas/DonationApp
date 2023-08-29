@@ -70,5 +70,7 @@ const Categories = createSlice({
     },
   },
 });
+
 export const {resetCategories, updateSelectedCategoryId} = Categories.actions;
+
 export default Categories.reducer;
