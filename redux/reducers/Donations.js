@@ -204,7 +204,7 @@ const initialState = {
     },
   ],
   selectedDonationId: null,
-  selectedDonationInformation: {},
+  selectedDonationInformation: null,
 };
 
 const Donations = createSlice({

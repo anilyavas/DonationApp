@@ -1,7 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {Routes} from './Routes';
 import Home from '../screens/Home/Home';
-import SingleDonationItem from '../components/SingleDonationItem/SingleDonationItem';
+import SingleDonationItem from '../screens/SingleDonationItem/SingleDonationItem';
 
 const Stack = createStackNavigator();
 
