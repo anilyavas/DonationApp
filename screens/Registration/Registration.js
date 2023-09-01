@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import style from './style';
 import globalStyle from '../../assets/styles/globalStyle';
 import BackButton from '../../components/BackButton/BackButton';
+import {createUser} from '../../api/user';
 
 const Registration = ({navigation}) => {
   const [fullName, setFullName] = useState('');
@@ -47,7 +48,10 @@ const Registration = ({navigation}) => {
           />
         </View>
         <View style={globalStyle.marginBottom24}>
-          <Button title={'Register'} />
+          <Button
+            title={'Register'}
+            onPress={async () => await createUser(fullName, email, password)}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
