@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Pressable, SafeAreaView, ScrollView, View} from 'react-native';
+import {Pressable, SafeAreaView, ScrollView, View, Text} from 'react-native';
 import Input from '../../components/Input/Input';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
@@ -7,10 +7,12 @@ import Button from '../../components/Button/Button';
 import style from './style';
 import globalStyle from '../../assets/styles/globalStyle';
 import {Routes} from '../../navigation/Routes';
+import {loginUser} from '../../api/user';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   return (
     <SafeAreaView style={[globalStyle.flex, globalStyle.backgroundWhite]}>
       <ScrollView
@@ -35,8 +37,22 @@ const Login = ({navigation}) => {
             onChangeText={value => setPassword(value)}
           />
         </View>
+        {error.length > 0 && <Text style={style.error}>{error}</Text>}
+
         <View style={globalStyle.marginBottom24}>
-          <Button title={'Login'} />
+          <Button
+            onPress={async () => {
+              let user = await loginUser(email, password);
+              if (user.status) {
+                setError(user.error);
+              } else {
+                setError('');
+                navigation.navigate(Routes.Home);
+              }
+            }}
+            title={'Login'}
+            isDisabled={email.length < 5 || password.length < 8}
+          />
         </View>
         <Pressable
           style={style.registrationButton}

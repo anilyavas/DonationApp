@@ -24,7 +24,7 @@ const style = StyleSheet.create({
   success: {
     fontFamily: 'Inter',
     fontSize: scaleFontSize(16),
-    color: '#FF0000',
+    color: '#28a745',
     marginBottom: verticalScale(24),
   },
 });
