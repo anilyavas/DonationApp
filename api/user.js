@@ -17,7 +17,7 @@ export const createUser = async (fullName, email, password) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const response = await auth().signInWithEmailandPassword(email, password);
+    const response = await auth().signInWithEmailAndPassword(email, password);
     const token = await response.user.getIdToken();
     return {
       status: true,
@@ -34,7 +34,7 @@ export const loginUser = async (email, password) => {
       return {
         status: false,
         error:
-          'The email you entered does not exist. Please create new account.',
+          'The email you entered does not exist. Please create a new account.',
       };
     }
     return {status: false, error: 'Something went wrong'};
