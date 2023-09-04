@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* DonationAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DonationAppTests.m */; };
+		04AB0E1A2AA5C9C0003F7539 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04AB0E192AA5C9C0003F7539 /* BootSplash.storyboard */; };
 		04ACBBCF2AA1E19E00C23F9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04ACBBCE2AA1E19E00C23F9B /* GoogleService-Info.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -41,6 +42,7 @@
 		00E356EE1AD99517003FC87E /* DonationAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonationAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DonationAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DonationAppTests.m; sourceTree = "<group>"; };
+		04AB0E192AA5C9C0003F7539 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = DonationApp/BootSplash.storyboard; sourceTree = "<group>"; };
 		04ACBBCE2AA1E19E00C23F9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DonationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DonationApp/AppDelegate.h; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				04AB0E192AA5C9C0003F7539 /* BootSplash.storyboard */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
@@ -281,6 +284,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				04AB0E1A2AA5C9C0003F7539 /* BootSplash.storyboard in Resources */,
 				65C2060FA3DD47E399179C0B /* Inter-Black.ttf in Resources */,
 				D52F165CFD554F118DCE9D4A /* Inter-Bold.ttf in Resources */,
 				9E25061026974B7D83F527BE /* Inter-ExtraBold.ttf in Resources */,
